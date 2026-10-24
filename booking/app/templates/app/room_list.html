@@ -1,0 +1,18 @@
+{% extends 'app/base.html' %}
+{% block title %}Кімнати · Stayline{% endblock %}
+{% block content %}
+<span class="eyebrow">Каталог</span>
+<div class="section-head"><div><h1 style="font-size:48px">Кімнати</h1><p class="muted">Доступні категорії та вартість проживання.</p></div><a class="button" href="{% url 'booking_create' %}">Нове бронювання</a></div>
+{% if rooms %}
+  <div class="room-grid">
+    {% for room in rooms %}
+      <article class="room">
+        <div class="room-top"><div><span class="room-number">Кімната {{ room.room_number }}</span><h3>{{ room.room_type }}</h3></div><span class="price">{{ room.price_per_night }} ₴</span></div>
+        <p class="muted">Вартість за ніч</p>
+      </article>
+    {% endfor %}
+  </div>
+{% else %}
+  <div class="empty">Кімнат поки немає. Додайте першу кімнату в <a href="/admin/app/room/add/">адмінпанелі</a>.</div>
+{% endif %}
+{% endblock %}

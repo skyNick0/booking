@@ -1,0 +1,17 @@
+{% extends 'app/base.html' %}
+{% block title %}Нове бронювання · Stayline{% endblock %}
+{% block content %}
+<span class="eyebrow">Гість і деталі</span>
+<div class="section-head"><div><h1 style="font-size:48px">Нове бронювання</h1><p class="muted">Заповніть дані гостя та час бронювання.</p></div></div>
+<section class="form-panel">
+  {% if form.user.field.queryset.exists %}
+    <form method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button class="button" type="submit">Зберегти бронювання</button>
+    </form>
+  {% else %}
+    <div class="empty">Спершу додайте користувача в <a href="/admin/app/user/add/">адмінпанелі</a>, тоді можна буде створити бронювання.</div>
+  {% endif %}
+</section>
+{% endblock %}
