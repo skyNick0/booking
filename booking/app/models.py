@@ -11,12 +11,12 @@ class User(models.Model):
 
 class Booking(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    booking_date = models.DateTimeField()
-    booking_time = models.TimeField()
+    check_in = models.DateField()
+    check_out = models.DateField()
     number_of_guests = models.PositiveIntegerField()
 
     def __str__(self):
-        return f"Booking by {self.user.username} on {self.booking_date} at {self.booking_time}"
+        return f"Booking by {self.user.username} from {self.check_in} to {self.check_out}"
 
 class Room(models.Model):
     room_number = models.CharField(max_length=10, unique=True)

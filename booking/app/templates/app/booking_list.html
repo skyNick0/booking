@@ -5,8 +5,8 @@
 <div class="section-head"><div><h1 style="font-size:48px">Бронювання</h1><p class="muted">Список створених бронювань.</p></div><a class="button" href="{% url 'booking_create' %}">Додати бронювання</a></div>
 {% if bookings %}
   <div class="table-wrap"><table>
-    <thead><tr><th>Гість</th><th>Дата</th><th>Час</th><th>Кількість гостей</th></tr></thead>
-    <tbody>{% for booking in bookings %}<tr><td>{{ booking.user.username }}</td><td>{{ booking.booking_date|date:'d.m.Y H:i' }}</td><td>{{ booking.booking_time|time:'H:i' }}</td><td>{{ booking.number_of_guests }}</td></tr>{% endfor %}</tbody>
+    <thead><tr><th>Гість</th><th>Дата в'їзду</th><th>Дата виїзду</th><th>Кількість гостей</th></tr></thead>
+    <tbody>{% for booking in bookings %}<tr><td>{{ booking.user.username }}</td><td>{{ booking.check_in|date:'d.m.Y' }}</td><td>{{ booking.check_out|date:'d.m.Y' }}</td><td>{{ booking.number_of_guests }}</td></tr>{% endfor %}</tbody>
   </table></div>
 {% else %}
   <div class="empty">Бронювань ще немає. Створіть перше бронювання.</div>

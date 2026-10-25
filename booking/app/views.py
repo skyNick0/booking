@@ -9,7 +9,7 @@ def home(request):
 	context = {
 		"room_count": Room.objects.count(),
 		"booking_count": Booking.objects.count(),
-		"recent_bookings": Booking.objects.select_related("user").order_by("-booking_date")[:5],
+		"recent_bookings": Booking.objects.select_related("user").order_by("-check_in")[:5],
 		"rooms": Room.objects.all()[:3],
 	}
 	return render(request, "app/home.html", context)
@@ -20,7 +20,7 @@ def room_list(request):
 
 
 def booking_list(request):
-	bookings = Booking.objects.select_related("user").order_by("-booking_date")
+	bookings = Booking.objects.select_related("user").order_by("-check_in")
 	return render(request, "app/booking_list.html", {"bookings": bookings})
 
 
