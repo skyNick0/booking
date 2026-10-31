@@ -14,6 +14,7 @@ class Booking(models.Model):
     check_in = models.DateField()
     check_out = models.DateField()
     number_of_guests = models.PositiveIntegerField()
+    email = models.EmailField()
 
     def __str__(self):
         return f"Booking by {self.user.username} from {self.check_in} to {self.check_out}"

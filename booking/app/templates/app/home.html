@@ -32,8 +32,8 @@
   <div class="section-head"><h2>Останні бронювання</h2><a class="text-link" href="{% url 'booking_list' %}">Переглянути всі</a></div>
   {% if recent_bookings %}
     <div class="table-wrap"><table>
-      <thead><tr><th>Гість</th><th>Дата в'їзду</th><th>Дата виїзду</th><th>Гостей</th></tr></thead>
-      <tbody>{% for booking in recent_bookings %}<tr><td>{{ booking.user.username }}</td><td>{{ booking.check_in|date:'d.m.Y' }}</td><td>{{ booking.check_out|date:'d.m.Y' }}</td><td>{{ booking.number_of_guests }}</td></tr>{% endfor %}</tbody>
+      <thead><tr><th>Гість</th><th>Пошта</th><th>Дата в'їзду</th><th>Дата виїзду</th><th>Гостей</th></tr></thead>
+      <tbody>{% for booking in recent_bookings %}<tr><td>{{ booking.user.username }}</td><td>{{ booking.email }}</td><td>{{ booking.check_in|date:'d.m.Y' }}</td><td>{{ booking.check_out|date:'d.m.Y' }}</td><td>{{ booking.number_of_guests }}</td></tr>{% endfor %}</tbody>
     </table></div>
   {% else %}
     <div class="empty">Бронювань ще немає.</div>
