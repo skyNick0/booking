@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.shortcuts import redirect
 
-from .forms import BookingForm
+from .forms import BookingForm, RoomForm
 from .models import Booking, Room
 
 
@@ -30,3 +30,13 @@ def booking_create(request):
 		form.save()
 		return redirect("booking_list")
 	return render(request, "app/booking_form.html", {"form": form})
+
+def room_create(request):
+	if request.method == "POST":
+		form = RoomForm(request.POST)
+		if form.is_valid():
+			form.save()
+			return redirect("room_list")
+	else:
+		form = RoomForm()
+	return render(request, "app/room_form.html", {"form": form})
